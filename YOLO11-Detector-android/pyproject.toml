@@ -1,0 +1,36 @@
+[project]
+name = "YOLOv11-Detector"
+version = "1.0.0"
+description = "Run YOLOv11 ONNX object detection on images, videos, and a live webcam feed."
+requires-python = ">=3.12"
+authors = [
+    { name = "NyiNyiMyo", email = "nyinyi.m@kkumail.com" }
+]
+dependencies = [
+    "flet",
+    "numpy",
+    # "ai-edge-litert",
+    "tflite-runtime",
+    "flet-camera",
+    "opencv-python"
+]
+
+[dependency-groups]
+dev = [
+    "flet-cli",
+    "flet-desktop",
+    "flet-web"
+]
+
+[tool.flet.metadata]
+title = "YOLOv11 Detector"
+
+[tool.flet.android.permission]
+"android.permission.CAMERA" = true
+
+[tool.flet]
+org = "dev.flet"
+company = "NyiNyiMyo"
+# OpenCV loads cv2/config.py dynamically and requires it to remain a source file.
+compile_packages = false
+copyright = "Copyright (C) 2026 by NyiNyiMyo"

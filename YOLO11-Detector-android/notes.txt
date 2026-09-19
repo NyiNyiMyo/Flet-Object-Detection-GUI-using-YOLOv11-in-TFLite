@@ -1,0 +1,52 @@
+in thonny,
+
+flet run main.py
+flet build windows --no-compile-packages
+
+flet run --android main.py
+flet run --ios main.py
+
+for android, 
+
+pip install ai-edge-litert
+pip install flet-camera
+flet run --android main.py
+flet build apk --no-compile-packages
+flet build apk --no-compile-packages --android-permissions android.permission.CAMERA=true
+adb install -r build\apk\YOLOv11-Detector.apk
+
+in Linux, 
+
+- cd "/mnt/c/Users/User/Downloads/flet works/YOLO11-Detector/"
+sudo apt install python3-pip
+sudo apt install python3.14-venv
+python3 -m venv .venv
+- source .venv/bin/activate
+pip install 'flet[all]'
+pip install opencv-python
+pip install onnxruntime
+sudo apt update && sudo apt install -y libsecret-1-0
+sudo apt update && sudo apt install -y xdg-desktop-portal xdg-desktop-portal-gtk
+sudo apt update && sudo apt install -y fonts-noto-color-emoji
+- flet run main.py
+flet build linux --no-compile-packages (but only in real Linux)
+
+nano run_app.sh
+
+#!/bin/bash
+# Move to project directory
+cd "/mnt/c/Users/User/Downloads/flet works/YOLO11-Detector"
+
+# Activate working virtual environment
+source .venv/bin/activate
+
+# Force software rendering (prevents the libEGL / MESA warnings)
+export LIBGL_ALWAYS_SOFTWARE=1
+
+# Run the app
+flet run main.py
+
+Press Ctrl+O, Enter, then Ctrl+X to save and exit.
+
+chmod +x run_app.sh
+./run_app.sh
