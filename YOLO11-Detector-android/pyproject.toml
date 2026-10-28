@@ -9,8 +9,8 @@ authors = [
 dependencies = [
     "flet",
     "numpy",
-    # "ai-edge-litert",
-    "tflite-runtime",
+    #"ai-edge-litert",  # for desktop
+    "tflite-runtime", # for android
     "flet-camera",
     "opencv-python"
 ]
