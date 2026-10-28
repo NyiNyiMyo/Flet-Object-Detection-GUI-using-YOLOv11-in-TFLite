@@ -66,7 +66,7 @@ class DetectorView:
         )
         return ft.Column(
             controls=[
-                ft.Text("📟 Makers - YOLOv11 ONNX Detector", color=ft.Colors.WHITE),
+                ft.Text("📟 Makers - YOLOv11 TFLite Detector", color=ft.Colors.WHITE),
                 self.status,
                 ft.Container(content=preview_frame, alignment=ft.Alignment.CENTER, expand=True),
                 ft.Slider(
@@ -199,10 +199,10 @@ class DetectorView:
                     break
                 
                 # --- CROSS-PLATFORM ANDROID COLOR PATCH ---
-                if self.is_android:
+                #if self.is_android:
                     # Android VideoCapture usually decodes as RGBA or inverse RGB channels
                     # If colors are still slightly off (e.g. blue faces), switch to cv2.COLOR_RGBA2BGR
-                    frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+                    #frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
                 # ------------------------------------------
 
                 annotated, count = await asyncio.to_thread(self.detector.annotate, frame)
